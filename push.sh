@@ -22,8 +22,8 @@ git commit -m "$input"
 
 
 
-git push -u origin master
-git push -u github master
+git push -u origin main
+git push -u github main
 
 echo "################################################################"
 echo "###################    Git Push Done      ######################"
