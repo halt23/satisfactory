@@ -2,7 +2,7 @@ name: Sync with Git Server
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Set the schedule based on your needs, e.g., daily
+    - cron: '0 0 * * *'  
 
 jobs:
   sync:
@@ -15,8 +15,8 @@ jobs:
       - name: Pull from Git Server
         run: |
           git remote add main-server https://git.sammaas.com/satisfactory.git
-          git fetch git-server
-          git merge git-server/main --no-edit
+          git fetch main-server
+          git merge main-server/main --no-edit
 
       - name: Push to GitHub
         run: |
