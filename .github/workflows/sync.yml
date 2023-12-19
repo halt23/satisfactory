@@ -1,0 +1,25 @@
+name: Sync with Git Server
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Pull from Git Server
+        run: |
+          git remote add main-server https://git.sammaas.com/satisfactory.git
+          git fetch main-server
+          git merge main-server/main --no-edit
+
+      - name: Push to GitHub
+        run: |
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
